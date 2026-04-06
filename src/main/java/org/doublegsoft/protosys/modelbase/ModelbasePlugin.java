@@ -26,9 +26,6 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 import org.doublegsoft.protosys.commons.FileSystemTemplateBasedPlugin;
-import org.doublegsoft.protosys.sqlmanager.SqlManagerCodegen;
-import org.doublegsoft.protosys.sqlmanager.sqlgen.Sqlgen;
-import org.doublegsoft.protosys.tatabase.TatabasePlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -91,14 +88,12 @@ import java.util.Map;
  */
 public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
 
-  public static final TatabasePlugin TATABASE = new TatabasePlugin();
-
   public static final SQLAPIModelExpressionParser SQL_API_MODEL_EXPRESSION_PARSER = new SQLAPIModelExpressionParser();
 
   @Override
   public void decorate(ModelDefinition model, HashObject globals) throws IOException {
-    Sqlgen.setIndentCount(2);
-    globals.put("codegen4sql", new SqlManagerCodegen());
+//    Sqlgen.setIndentCount(2);
+    // globals.put("codegen4sql", new SqlManagerCodegen());
 
     // process value-labelled object
     for (ObjectDefinition obj : model.getObjects()) {

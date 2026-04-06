@@ -1,0 +1,145 @@
+@entity
+@persistence(name='tn_crm_custarch')
+@name(label='客户档案', plural='customer_archives')
+customer_archive<
+
+  @persistence(name='contid')
+  @name(label='联系人主键')
+  id!!: long,
+
+  @persistence(name='acctid')
+  @name(label='关联客户账户(ID)')
+  account: long,
+
+  @persistence(name='nam')
+  @name(label='联系人姓名')
+  name: string(50),
+
+  @persistence(name='typ')
+  @name(label='联系人类型')
+  type: enum[PRIMARY:主要联系人户主, SECONDARY:备用联系人, EMERGENCY:紧急联系人, AGENT:授权代办人],
+
+  @persistence(name='sts')
+  @name(label='人员状态')
+  status: enum[VALID:有效, INVALID:无效注销],
+
+  @persistence(name='reltyp')
+  @name(label='与账户关系')
+  relationship: enum[HIMSELF:本人, PARENT:父母, SPOUSE:配偶, CHILD:子女, OTHER:其他],
+
+  @persistence(name='idtyp')
+  @name(label='证件类型')
+  id_type: enum[ID_CARD:居民身份证, PASSPORT:护照, MILITARY:军官证, HK_MO:港澳台居民通行证],
+
+  @persistence(name='idno')
+  @name(label='证件号码(唯一索引)')
+  id_number: string(20),
+
+  @persistence(name='gnd')
+  @name(label='性别')
+  gender: enum[M:男, F:女],
+
+  @persistence(name='nat')
+  @name(label='国籍')
+  nationality: string(20),
+
+  @persistence(name='eth')
+  @name(label='民族')
+  ethnicity: string(20),
+
+  @persistence(name='dob')
+  @name(label='出生日期')
+  date_of_birth: date,
+
+  @persistence(name='lang')
+  @name(label='语言偏好')
+  language_pref: string(10),
+
+  @persistence(name='mob')
+  @name(label='手机号码(主号)')
+  mobile_main: string(15),
+
+  @persistence(name='mobbak')
+  @name(label='备用手机号')
+  mobile_backup: string(15),
+
+  @persistence(name='tel')
+  @name(label='固定电话')
+  landline: string(15),
+
+  @persistence(name='eml')
+  @name(label='电子邮箱')
+  email: string(50),
+
+  @persistence(name='wid')
+  @name(label='微信号(用于服务通知)')
+  wechat_id: string(50),
+
+  @persistence(name='prov')
+  @name(label='省份')
+  province: string(20),
+
+  @persistence(name='city')
+  @name(label='市/区')
+  city: string(20),
+
+  @persistence(name='zip')
+  @name(label='邮政编码')
+  postal_code: string(10),
+
+  @persistence(name='addr')
+  @name(label='详细通讯地址')
+  detail_address: string(200),
+
+  @persistence(name='emp')
+  @name(label='工作单位/雇主')
+  employer: string(100),
+
+  @persistence(name='occ')
+  @name(label='职业类型')
+  occupation: string(50),
+
+  @persistence(name='pos')
+  @name(label='职务/职称')
+  job_title: string(50),
+
+  @persistence(name='wrtel')
+  @name(label='单位电话')
+  work_phone: string(15),
+
+  @persistence(name='inc')
+  @name(label='年收入区间')
+  annual_income: enum[10KV:_10KV('10kv以下'), KV20:_10_20KV('10kv-20kv'), 20:_20_50('20kv-50kv'), 50:五十万以上],
+
+  @persistence(name='ast')
+  @name(label='实名认证状态')
+  auth_status: enum[UNVERIFIED:未认证, VERIFIED:已认证, REJECTED:审核驳回],
+
+  @persistence(name='achan')
+  @name(label='认证渠道')
+  auth_channel: enum[COUNTER:营业厅柜台, APP:手机APP, WEB:网上营业厅],
+
+  @persistence(name='adate')
+  @name(label='认证日期')
+  auth_date: datetime,
+
+  @persistence(name='usr')
+  @name(label='网厅/APP登录账号')
+  online_account: string(50),
+
+  @persistence(name='alvl')
+  @name(label='授权级别')
+  auth_level: enum[FULL:完全授权, LIMITED:部分查询授权],
+
+  @persistence(name='flag')
+  @name(label='主联系人标识(用于系统默认展示)')
+  is_primary_flag: boolean,
+
+  @persistence(name='rem')
+  @name(label='备注信息')
+  remarks: string(500),
+
+  @persistence(name='crttm')
+  @name(label='建档时间')
+  created_at: datetime
+>
