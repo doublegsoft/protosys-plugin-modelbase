@@ -141,6 +141,21 @@
       <artifactId>protosys-plugin-commons</artifactId>
       <version>${protosys.version}</version>
     </dependency>
+    <dependency>
+      <groupId>io.doublegsoft.modelbase</groupId>
+      <artifactId>modelbase</artifactId>
+      <version>7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.doublegsoft.typebase</groupId>
+      <artifactId>typebase</artifactId>
+      <version>7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.doublegsoft.tatabase</groupId>
+      <artifactId>tatabase</artifactId>
+      <version>7.0</version>
+    </dependency>
 <!--    <dependency>-->
 <!--      <groupId>org.doublegsoft.protosys</groupId>-->
 <!--      <artifactId>protosys-plugin-sqlmanager</artifactId>-->
@@ -167,16 +182,6 @@
       <groupId>com.doublegsoft.jcommons</groupId>
       <artifactId>jcommons-metaui</artifactId>
       <version>5.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.doublegsoft.modelbase</groupId>
-      <artifactId>modelbase</artifactId>
-      <version>7.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.doublegsoft.tatabase</groupId>
-      <artifactId>tatabase</artifactId>
-      <version>7.0</version>
     </dependency>
     <dependency>
       <groupId>io.doublegsoft.guidbase</groupId>
