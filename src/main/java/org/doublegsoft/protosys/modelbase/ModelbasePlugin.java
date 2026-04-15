@@ -237,7 +237,7 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
 
     if (dependentModelPath != null) {
       modelPath += ";" + dependentModelPath;
-    }
+    }gi
     ModelDefinition model = modelbase.createModelFromModelbase(modelPath.split(";"));
     for (ObjectDefinition obj : model.getObjects()) {
       /*!
