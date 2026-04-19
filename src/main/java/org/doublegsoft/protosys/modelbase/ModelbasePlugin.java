@@ -1,6 +1,5 @@
 package org.doublegsoft.protosys.modelbase;
 
-import com.doublegsoft.apiml.sql.SQLAPIModelExpressionParser;
 import com.doublegsoft.jcommons.lang.HashObject;
 import com.doublegsoft.jcommons.metabean.AttributeDefinition;
 import com.doublegsoft.jcommons.metabean.ModelDefinition;
@@ -17,10 +16,8 @@ import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
 import freemarker.template.DefaultObjectWrapper;
-import io.doublegsoft.ablang.AblangContext;
-import io.doublegsoft.guidbase.GuidbaseMiniContext;
-import io.doublegsoft.tatabase.Tatabase;
 import io.doublegsoft.typebase.Typebase;
+import io.doublegsoft.tatabase.Tatabase;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -87,8 +84,6 @@ import java.util.Map;
  * @since 1.0
  */
 public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
-
-  public static final SQLAPIModelExpressionParser SQL_API_MODEL_EXPRESSION_PARSER = new SQLAPIModelExpressionParser();
 
   @Override
   public void decorate(ModelDefinition model, HashObject globals) throws IOException {
@@ -211,22 +206,20 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
 
         }
       }
-      AblangContext context = new AblangContext(conns);
-      globalVars.set("apidata", context);
-
-      conns.stream().forEach(conn -> {
-        try {
-          conn.close();
-        } catch (SQLException ex) {
-        }
-      });
+//      AblangContext context = new AblangContext(conns);
+//      globalVars.set("apidata", context);
+//
+//      conns.stream().forEach(conn -> {
+//        try {
+//          conn.close();
+//        } catch (SQLException ex) {
+//        }
+//      });
     }
 
     globalVars.set("typebase", new Typebase());
     globalVars.set("tatabase", new Tatabase());
-    globalVars.set("guidbase_mini", new GuidbaseMiniContext());
-    // add sql api model parser support
-    globalVars.set("sqlapiparser", SQL_API_MODEL_EXPRESSION_PARSER);
+//    globalVars.set("guidbase_mini", new GuidbaseMiniContext());
     globalVars.set("c", new CConventions());
     globalVars.set("rust", new RustConventions());
     globalVars.set("go", new GoConventions());
