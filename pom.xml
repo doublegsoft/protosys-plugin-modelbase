@@ -114,6 +114,11 @@
       <version>7.0</version>
     </dependency>
     <dependency>
+      <groupId>io.doublegsoft.guidbase</groupId>
+      <artifactId>guidbase</artifactId>
+      <version>7.0</version>
+    </dependency>
+    <dependency>
       <groupId>io.doublegsoft.typebase</groupId>
       <artifactId>typebase</artifactId>
       <version>7.0</version>
@@ -133,9 +138,9 @@
       <version>5.0</version>
     </dependency>
     <dependency>
-      <groupId>io.doublegsoft.guidbase</groupId>
-      <artifactId>guidbase</artifactId>
-      <version>7.0</version>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-metacode</artifactId>
+      <version>1.0</version>
     </dependency>
 
     <dependency>
