@@ -15,7 +15,10 @@ import com.google.gson.Gson;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
+import freemarker.ext.beans.BeansWrapperBuilder;
+import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.DefaultObjectWrapperBuilder;
 import io.doublegsoft.typebase.Typebase;
 import io.doublegsoft.tatabase.Tatabase;
 import org.apache.commons.cli.CommandLine;
@@ -153,6 +156,7 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
     if (globals != null) {
       globalVariables.putAll(globals);
     }
+    globalVariables.put("objectConstructor", new freemarker.template.utility.ObjectConstructor());
     visitAndRender(outputRoot, "", templateRoot, "", app, new HashObject());
   }
 
