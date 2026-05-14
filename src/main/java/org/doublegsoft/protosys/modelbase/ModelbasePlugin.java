@@ -326,11 +326,23 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
         }
       } else if (obj.isLabelled("pivot")) {
         String master = obj.getLabelledOptions("pivot").get("master");
-        String detail = obj.getLabelledOptions("pivot").get("detail");
-        String key = obj.getLabelledOptions("pivot").get("detail");
-        String value = obj.getLabelledOptions("pivot").get("value");
-        ObjectDefinition detailObj = model.findObjectByName(detail);
-
+        if (master != null) {
+          ObjectDefinition masterObj = model.findObjectByName(master);
+          for (AttributeDefinition attr : masterObj.getAttributes()) {
+            obj.addAttribute(attr);
+          }
+        }
+        for (AttributeDefinition attr : obj.getAttributes()) {
+          AttributeDefinition realAttr = null;
+          if (master != null) {
+            realAttr = model.findAttributeByNames(master, attr.getName());
+          }
+          if (realAttr == null) {
+            attr.setLabelledOptions("redefined", new HashMap<>());
+          }
+        }
+      } else if ((obj.isLabelled("meta") && obj.getLabelledOptions("meta").get("master") != null)) {
+        String master = obj.getLabelledOptions("meta").get("master");
         if (master != null) {
           ObjectDefinition masterObj = model.findObjectByName(master);
           for (AttributeDefinition attr : masterObj.getAttributes()) {
