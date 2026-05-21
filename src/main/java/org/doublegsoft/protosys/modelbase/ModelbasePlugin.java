@@ -249,16 +249,17 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
     if (dependentModelPath != null) {
       // the dependent models is for reference, not applied to generate source code, and so add generated label
       ModelDefinition dependentModel = modelbase.createModelFromModelbase(dependentModelPath.split(";"));
-      for (ObjectDefinition obj : dependentModel.getObjects()) {
+      for (ObjectDefinition dependentObj : dependentModel.getObjects()) {
         /*!
         ** Modlebase对Module模块分类的支持。
         **
         ** 2025-01-04
         */
-        if (obj.isLabelled("module")) {
-          obj.setModuleName(obj.getLabelledOptions("module").get("name"));
+        if (dependentObj.isLabelled("module")) {
+          dependentObj.setModuleName(dependentObj.getLabelledOptions("module").get("name"));
         }
-        ObjectDefinition objInModel = model.findObjectByName(obj.getName());
+        // 数据模型中的对象在依赖模型中已经定义过了
+        ObjectDefinition objInModel = model.findObjectByName(dependentObj.getName());
         objInModel.setLabelledOptions("generated", new HashMap<>());
       }
     }
