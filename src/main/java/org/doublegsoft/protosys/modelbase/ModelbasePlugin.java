@@ -210,20 +210,10 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
 
         }
       }
-//      AblangContext context = new AblangContext(conns);
-//      globalVars.set("apidata", context);
-//
-//      conns.stream().forEach(conn -> {
-//        try {
-//          conn.close();
-//        } catch (SQLException ex) {
-//        }
-//      });
     }
 
     globalVars.set("typebase", new Typebase());
     globalVars.set("tatabase", new Tatabase());
-//    globalVars.set("guidbase_mini", new GuidbaseMiniContext());
     globalVars.set("c", new CConventions());
     globalVars.set("rust", new RustConventions());
     globalVars.set("go", new GoConventions());
@@ -309,9 +299,7 @@ public class ModelbasePlugin extends FileSystemTemplateBasedPlugin {
       modelbase.prototype(app, model, outputRoot, templateRoot, globalVars);
     } catch (Throwable cause) {
       cause.printStackTrace();
-      System.out.println(cause.getMessage());
     }
-
   }
 
 }
